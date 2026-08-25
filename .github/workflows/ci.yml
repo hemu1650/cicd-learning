@@ -1,0 +1,25 @@
+name: CI Pipeline
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+
+            - name: Check project files
+              run: |
+                  echo "Running CI pipeline..."
+                  echo "Checking index.html..."
+                  test -f index.html
+                  echo "index.html exists"
+                  echo "CI Pipeline Passed!"
